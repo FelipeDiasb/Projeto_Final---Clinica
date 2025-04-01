@@ -3,7 +3,7 @@ import customtkinter as ctk
 from tkinter import messagebox, ttk
 import pandas as pd
 from tkinter import filedialog
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw  # Pillow  Travesseiro  
 
 # Configurações iniciais
 ctk.set_appearance_mode("Dark")
