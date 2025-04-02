@@ -110,6 +110,10 @@ def gerar_relatorio():
     tree_relatorio.heading("CPF", text="CPF")
     tree_relatorio.column("CPF", width=120, anchor="center")
 
+
+    
+        
+
     # Preencher a tabela com os dados
     conn = conectar()
     c = conn.cursor()
@@ -178,6 +182,9 @@ def gerar_relatorio():
             option_sexo = ctk.CTkOptionMenu(editar_janela, variable=sexo_var, values=["Masculino", "Feminino"])
             option_sexo.pack(pady=5)
 
+
+
+        
             # Função para salvar alterações
             def salvar_edicao():
                 novo_nome = entry_nome.get()
@@ -211,28 +218,28 @@ def gerar_relatorio():
         except IndexError:
             messagebox.showwarning("Atenção", "Selecione um paciente para editar!")
     
-    #     def exportar_para_excel():
-    #      """Exporta os dados do relatório para um arquivo Excel."""
-    #         #Obter os dados do Treeview
-    #      dados = []
-    #      for item in tree_relatorio.get_children():
-    #      valores = tree_relatorio.item(item, "values")
-    #      dados.append(valores)
+    def exportar_para_excel():
+     """Exporta os dados do relatório para um arquivo Excel."""
+     #Obter os dados do Treeview
+     dados = []
+     for item in tree_relatorio.get_children():
+      valores = tree_relatorio.item(item, "values")
+      dados.append(valores)
     
-    #  # Criar um DataFrame do pandas
-    #     colunas = ['ID', 'Nome', 'Idade', 'Peso', 'Altura', 'IMC', 'Sexo', 'CPF']
-    #     df = pd.DataFrame(dados, columns=colunas)
+     # Criar um DataFrame do pandas
+      colunas = ['ID', 'Nome', 'Idade', 'Peso', 'Altura', 'IMC', 'Sexo', 'CPF']
+      df = pd.DataFrame(dados, columns=colunas)
 
-    #   #Abrir um diálogo para escolher onde salvar o arquivo
-    #      arquivo_excel = filedialog.asksaveasfilename(
-    #      defaultextension=".xlsx",
-    #      filetypes=[("Planilha Excel", "*.xlsx")],
-    #      title="Salvar Relatório"
-    #  )
+     #Abrir um diálogo para escolher onde salvar o arquivo
+     arquivo_excel = filedialog.asksaveasfilename(
+         defaultextension=".xlsx",
+        filetypes=[("Planilha Excel", "*.xlsx")],     #correto
+        title="Salvar Relatório"
+     )
 
-    #  if arquivo_excel:  # Se o usuário escolher um local, salvar o arquivo
-    #      df.to_excel(arquivo_excel, index=False, engine='openpyxl')
-    #      messagebox.showinfo("Sucesso", "Relatório exportado para Excel com sucesso!")
+     if arquivo_excel:  # Se o usuário escolher um local, salvar o arquivo
+        df.to_excel(arquivo_excel, index=False, engine='openpyxl')
+        messagebox.showinfo("Sucesso", "Relatório exportado para Excel com sucesso!")
 
    # Criando um frame para os botões e alinhando à direita
     frame_botoes = ctk.CTkFrame(relatorio_janela)
@@ -247,8 +254,8 @@ def gerar_relatorio():
     btn_excluir.pack(side="right")
     
     # #Botão para exportar relatório
-    # btn_exportar = ctk.CTkButton(frame_botoes, text="Exportar para Excel", command=exportar_para_excel, width=180, height=40)
-    # btn_exportar.pack(side="right", padx=5)
+    btn_exportar = ctk.CTkButton(frame_botoes, text="Exportar para Excel", command=exportar_para_excel, width=180, height=40)
+    btn_exportar.pack(side="right", padx=5)
 
     relatorio_janela.mainloop()
 
@@ -387,7 +394,7 @@ login_janela.geometry('340x390')  # Aumentei a altura para caber a logo
 
 
 # # Carregar a imagem da logo
-imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/User/Desktop/projeto_clinica/Projet_clinica/Logo_clinica_redonda.png"), size=(150, 150))
+imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/Aluno/Desktop/Aluno/Logo_clinica_redonda.png"), size=(150, 150))
 
  # Exibir a imagem na tela de login
 label_logo = ctk.CTkLabel(login_janela, image=imagem_logo, text="")  # Define text="" para exibir apenas a imagem
