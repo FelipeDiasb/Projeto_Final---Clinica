@@ -334,61 +334,98 @@ def iniciar_sistema():
 def janela_login():
     global login_janela, campo_usuario, campo_senha, resultando_login
 
-    ctk.CTkLabel(login_janela, text="Usuário:").grid(row=0, column=0, padx=10, pady=20, sticky="w")
-    campo_usuario = ctk.CTkEntry(login_janela, width=200)
-    campo_usuario.grid(row=0, column=1, padx=20, pady=10)
+    login_janela = ctk.CTk()
+    login_janela.title('Login')
+    login_janela.geometry('340x390')
 
-    ctk.CTkLabel(login_janela, text="Senha:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
-    campo_senha = ctk.CTkEntry(login_janela, show="*", width=200)
-    campo_senha.grid(row=1, column=1, padx=10, pady=10)
+    imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/User/Desktop/Projeto_Final---Clinica-main/Logo_clinica_redonda.png"), size=(150, 150))
+    label_logo = ctk.CTkLabel(login_janela, image=imagem_logo, text="")
+    label_logo.pack(pady=10)
 
-    # Botão "Entrar"
-    ctk.CTkButton(login_janela, text="Entrar", command=validar_login, width=150, height=40).grid(row=2, column=1, columnspan=2, pady=12)
+    campo_usuario = ctk.CTkEntry(login_janela, placeholder_text='Usuário')
+    campo_usuario.pack(pady=10)
 
-    # Mensagem de erro abaixo do botão
-    resultando_login = ctk.CTkLabel(login_janela, text="")
-    resultando_login.grid(row=3, column=1, columnspan=2, pady=10)
+    campo_senha = ctk.CTkEntry(login_janela, placeholder_text='Senha', show="*")
+    campo_senha.pack(pady=10)
+
+    ctk.CTkButton(login_janela, text='Login', command=validar_login).pack(pady=10)
+
+    resultando_login = ctk.CTkLabel(login_janela, text='')
+    resultando_login.pack(pady=5)
 
     login_janela.mainloop()
 
+
+
+# def janela_login():
+#     global login_janela, campo_usuario, campo_senha, resultando_login
+
+#     ctk.CTkLabel(login_janela, text="Usuário:").grid(row=0, column=0, padx=10, pady=20, sticky="w")
+#     campo_usuario = ctk.CTkEntry(login_janela, width=200)
+#     campo_usuario.grid(row=0, column=1, padx=20, pady=10)
+
+#     ctk.CTkLabel(login_janela, text="Senha:").grid(row=1, column=0, padx=10, pady=10, sticky="w")
+#     campo_senha = ctk.CTkEntry(login_janela, show="*", width=200)
+#     campo_senha.grid(row=1, column=1, padx=10, pady=10)
+
+#     # Botão "Entrar"
+#     ctk.CTkButton(login_janela, text="Entrar", command=validar_login, width=150, height=40).grid(row=2, column=1, columnspan=2, pady=12)
+
+#     # Mensagem de erro abaixo do botão
+#     resultando_login = ctk.CTkLabel(login_janela, text="")
+#     resultando_login.grid(row=3, column=1, columnspan=2, pady=10)
+
+#     login_janela.mainloop()
+
 def validar_login():
-    global login_janela
     usuario = campo_usuario.get()
     senha = campo_senha.get()
     if usuario == "felipe" and senha == "1234":
-        login_janela.destroy()
-        iniciar_sistema()
+        login_janela.destroy()   # Fecha de forma limpa
+        iniciar_sistema()        # Abre o sistema só depois de fechar a anterior
     else:
         resultando_login.configure(text='Login incorreto!', text_color='red')
 
 
-# Criando a janela de login
-login_janela = ctk.CTk()
-login_janela.title('Login')
-login_janela.geometry('340x390')  # Aumentei a altura para caber a logo
-
-# Configurando o layout da janela de login
-# # Carregar a imagem da logo
-imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/User/Desktop/Projeto_Final---Clinica-main/Logo_clinica_redonda.png"), size=(150, 150))
-
- # Exibir a imagem na tela de login
-label_logo = ctk.CTkLabel(login_janela, image=imagem_logo, text="")  # Define text="" para exibir apenas a imagem
-label_logo.pack(pady=10)  # Espaçamento da logo
-
-# Campos de login
-campo_usuario = ctk.CTkEntry(login_janela, placeholder_text='Usuário')
-campo_usuario.pack(pady=10)
-
-campo_senha = ctk.CTkEntry(login_janela, placeholder_text='Senha', show="*")
-campo_senha.pack(pady=10)
-
-ctk.CTkButton(login_janela, text='Login', command=validar_login).pack(pady=10)
-
-resultando_login = ctk.CTkLabel(login_janela, text='')
-resultando_login.pack(pady=5)
-
-login_janela.mainloop()
+# def validar_login():   #-----------------------------
+#     global login_janela
+#     usuario = campo_usuario.get()
+#     senha = campo_senha.get()
+#     if usuario == "felipe" and senha == "1234":
+#         login_janela.withdraw()  # Oculta a janela sem destruir ainda
+#         iniciar_sistema()
+#         login_janela.destroy()   # Só destrói quando o sistema fecha
+#     else:
+#         resultando_login.configure(text='Login incorreto!', text_color='red')
 
 
 
-janela_login()
+# def janela_login(): # -----------------------------
+#     global login_janela, campo_usuario, campo_senha, resultando_login
+
+#     login_janela = ctk.CTk()
+#     login_janela.title('Login')
+#     login_janela.geometry('340x390')
+
+#     imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/User/Desktop/Projeto_Final---Clinica-main/Logo_clinica_redonda.png"), size=(150, 150))
+#     label_logo = ctk.CTkLabel(login_janela, image=imagem_logo, text="")
+#     label_logo.pack(pady=10)
+
+#     campo_usuario = ctk.CTkEntry(login_janela, placeholder_text='Usuário')
+#     campo_usuario.pack(pady=10)
+
+#     campo_senha = ctk.CTkEntry(login_janela, placeholder_text='Senha', show="*")
+#     campo_senha.pack(pady=10)
+
+#     ctk.CTkButton(login_janela, text='Login', command=validar_login).pack(pady=10)
+
+#     resultando_login = ctk.CTkLabel(login_janela, text='')
+#     resultando_login.pack(pady=5)
+
+#     login_janela.mainloop()
+
+
+# 🔥 Apenas ISSO fora das funções:
+if __name__ == "__main__":
+    janela_login()
+
