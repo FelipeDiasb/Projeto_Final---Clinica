@@ -334,10 +334,6 @@ def iniciar_sistema():
 def janela_login():
     global login_janela, campo_usuario, campo_senha, resultando_login
 
-    # login_janela = ctk.CTk()
-    # login_janela.title("Login")
-    # login_janela.geometry("320x240")  # Ajustando o tamanho da tela de login
-
     ctk.CTkLabel(login_janela, text="Usuário:").grid(row=0, column=0, padx=10, pady=20, sticky="w")
     campo_usuario = ctk.CTkEntry(login_janela, width=200)
     campo_usuario.grid(row=0, column=1, padx=20, pady=10)
@@ -371,30 +367,9 @@ login_janela = ctk.CTk()
 login_janela.title('Login')
 login_janela.geometry('340x390')  # Aumentei a altura para caber a logo
 
-# trabalando com teste de inserir imagem de logo na tela de login
-# Caminho da imagem original
-# caminho_imagem = "C:/Users/User/Desktop/projeto_clinica/Projet_clinica/Logo_clinica.png"
-
-# # Abrindo a imagem
-# imagem = Image.open(caminho_imagem).convert("RGBA")
-
-# # Criando uma máscara circular
-# mascara = Image.new("L", imagem.size, 0)
-# draw = ImageDraw.Draw(mascara)
-# tamanho = min(imagem.size)  # Tamanho do círculo
-# draw.ellipse((0, 0, tamanho, tamanho), fill=255)
-
-# # Aplicando a máscara na imagem
-# imagem_redonda = Image.new("RGBA", imagem.size, (0, 0, 0, 0))
-# imagem_redonda.paste(imagem, mask=mascara)
-
-# # Salvando ou carregando diretamente no CustomTkinter
-# imagem_redonda.save("C:/Users/User/Desktop/projeto_clinica/Projet_clinica/Logo_clinica_redonda.png")
-
-
-
+# Configurando o layout da janela de login
 # # Carregar a imagem da logo
-imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/Aluno/Desktop/Aluno/Logo_clinica_redonda.png"), size=(150, 150))
+imagem_logo = ctk.CTkImage(light_image=Image.open("C:/Users/User/Desktop/Projeto_Final---Clinica-main/Logo_clinica_redonda.png"), size=(150, 150))
 
  # Exibir a imagem na tela de login
 label_logo = ctk.CTkLabel(login_janela, image=imagem_logo, text="")  # Define text="" para exibir apenas a imagem
